@@ -1,3 +1,10 @@
+-- display setting
+.mode column
+.header on
+
+-- structure of the table
+.schema orders
+
 -- Show tables
 .tables
 
