@@ -36,6 +36,27 @@ WHERE customer_id = 'g3nXeJkGI0Qw'
 ORDER BY order_purchase_timestamp DESC
 LIMIT 20;
 
+-- Drop index see the change
+DROP INDEX idx_orders_customer_date;
+
+EXPLAIN QUERY PLAN
+SELECT order_id, order_purchase_timestamp, order_status
+FROM orders
+WHERE customer_id = 'g3nXeJkGI0Qw'
+ORDER BY order_purchase_timestamp DESC
+LIMIT 20;
+
+-- Recreate index
+CREATE INDEX idx_orders_customer_date
+ON orders(customer_id, order_purchase_timestamp DESC);
+
+EXPLAIN QUERY PLAN
+SELECT order_id, order_purchase_timestamp, order_status
+FROM orders
+WHERE customer_id = 'g3nXeJkGI0Qw'
+ORDER BY order_purchase_timestamp DESC
+LIMIT 20;
+
 -- Join query (order details)
 SELECT o.order_id,
        o.order_purchase_timestamp,
@@ -45,4 +66,4 @@ SELECT o.order_id,
 FROM orders o
 JOIN order_items oi ON o.order_id = oi.order_id
 JOIN products p ON oi.product_id = p.product_id
-LIMIT 10;
+WHERE o.order_id = 'Axfy13Hk4PIk';
