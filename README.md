@@ -30,10 +30,28 @@ If not installed:
 
 ---
 
-## 3. How to Run the Project
+## 3. Run the Project
 
 ### Step 1: Open terminal
 Navigate to the project folder:
 
 ```bash
 cd ecommerce-sqlite-project
+```
+
+### Step 2: Open SQLite
+
+```bash
+sqlite3 ecommerce.db
+```
+### Step 3: Run a simple query
+
+```bash
+SELECT * FROM orders LIMIT 10;
+```
+### Step 4: Run all queries
+
+```bash
+.read queries.sql
+```
+
