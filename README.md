@@ -54,4 +54,12 @@ SELECT * FROM orders LIMIT 10;
 ```bash
 .read queries.sql
 ```
+---
 
+## 4. Reproduce Results
+To reproduce the results used in this project:
+
+```bash
+sqlite3 ecommerce.db
+.read queries.sql
+```
